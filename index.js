@@ -94,9 +94,16 @@ const client = new Client({
     }),
     puppeteer: {
         headless: true,
-        args: ['--no-sandbox', '--disable-setuid-sandbox']
+        executablePath: '/usr/bin/google-chrome',
+        args: [
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
+            '--disable-dev-shm-usage',
+            '--disable-gpu'
+        ]
     }
 });
+
 
 client.on('qr', (qr) => {
     console.log('📱 Scan this QR code:');
